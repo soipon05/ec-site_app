@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+このアプリケーションはとだこうきさんが作成された EC サイト作成の Issue を元に作成しています。
+解答は購入せずに作成していくので最初に構成されているものとは少しズレが生じる可能性があります。
 
-Things you may want to cover:
+### 環境
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Ruby version 2.5.5
+- Rails version 5.2.3
+- MySQL 5.7
+- ...
