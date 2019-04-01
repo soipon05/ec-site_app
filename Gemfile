@@ -65,3 +65,5 @@ gem 'faker'
 gem 'active_decorator'
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.2.0'
+# bootstrap導入のためのgem
+gem 'mini_racer'
