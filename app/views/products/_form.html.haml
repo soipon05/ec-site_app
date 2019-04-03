@@ -1,0 +1,29 @@
+-if product.errors.present?
+  %ul%error_explanation
+    - product.errors.fullmessages.each do |message|
+      %li.text-danger = message
+
+
+= form_with model: product, html: { class: "w-75 mx-auto p-5 border border-black" }, local: true do |f|
+  .form-group
+    = f.label :name, "Product"
+    = f.text_field :name, class: "form-control", id: "product_name"
+  .form-group
+    = f.label :name, "Description"
+    = f.text_area :description, rows: 2, class: "form-control", id: "product_description"
+  .form-group
+    = f.label :price, "Price"
+    = f.= number_field :price, class: "form-control", id: "product_price"
+  .form-group
+    = f.label :selllimit, "上限"
+    = f.number_field :selllimit, class: "form-control", id: "product_limit"
+  .form-group
+    = f.label :image, "Image"
+    .input-group#file
+      .custom-file
+        = f.file_field :image, class: "custom-file-input", id: "customfile", lang: "ja"
+        = f.label :image, "ファイル選択", class: "custom-file-label"
+      .input-group-append
+        %button.btn.btn-outline-secondary.reset{:type => "button" } 取消
+
+  = f.submit nil, class: "btn btn-primary mt-2"
