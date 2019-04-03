@@ -3,11 +3,4 @@
 
 .container
   .row
-    - @products.each do |pro|
-      .col-xs-12.col-sm-6.col-md-4
-        .card.mb-4
-          .card-body.pt-4.btn-parent
-            %h4.card-title= pro.name
-            %h6.card-subtitle.mb-2.text-muted= pro.public_price
-            %p.card-text= pro.description
-            = link_to "詳細", product, class: "btn btn-outline-info btn-children"
+    = render partial: "list", collection: @products, as: :product

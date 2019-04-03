@@ -1,0 +1,7 @@
+.col-xs-12.col-sm-6.col-md-4
+  .card.mb-4
+    .card-body.pt-4.btn-parent
+      %h4.card-title= product.name
+      %h6.card-subtitle.mb-2.text-muted= product.public_price
+      %p.card-text= product.description
+      =link_to "詳細", product, class: "btn btn-outline-info btn-children"
