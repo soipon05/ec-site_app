@@ -1,5 +1,5 @@
 -if product.errors.present?
-  %ul%error_explanation
+  %ul#error_explanation
     - product.errors.fullmessages.each do |message|
       %li.text-danger = message
 
@@ -13,7 +13,7 @@
     = f.text_area :description, rows: 2, class: "form-control", id: "product_description"
   .form-group
     = f.label :price, "Price"
-    = f.= number_field :price, class: "form-control", id: "product_price"
+    = f.number_field :price, class: "form-control", id: "product_price"
   .form-group
     = f.label :selllimit, "上限"
     = f.number_field :selllimit, class: "form-control", id: "product_limit"
