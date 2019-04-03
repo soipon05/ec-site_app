@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  has_one_attached :image
   # 定数を使ってステータスを管理
   enum status: { draft: 0, published: 1, closed: 2 }
 
@@ -12,5 +13,20 @@ class Product < ApplicationRecord
   validates :description, presence: true, on: :published
   validates :price,       presence: true, on: :published
   validates :selllimit,   presence: true, on: :published
+
+  def validates_image
+    return unless image.attached?
+    if image.blob.byte_size > 10.megabytes
+      image.purge
+      errors.add(:image, I18n.t('errors.messages.file_too_large'))
+    elsif !image?
+      image.purge
+      errors.add(:image, I18n.t('errors.messages.file_type_not_image'))
+    end
+  end
+
+  def image?
+     %w[image/jpg image/jpeg image/gif image/png].include?(image.blob.content_type)
+  end
   
 end
