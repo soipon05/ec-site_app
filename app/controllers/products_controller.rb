@@ -1,10 +1,11 @@
 class ProductsController < ApplicationController
+  before_action :set_product, only: %i[show]
+  
   def index
     @products = Product.all
   end
 
   def show
-    @products = Product.find(params[:id])
   end
   
   def new
@@ -26,5 +27,9 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :description, :price, :status, :selllimit, :image)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 end

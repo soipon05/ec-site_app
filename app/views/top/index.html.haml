@@ -1,13 +1,6 @@
 %h1 TOPページ
-
-%p 商品一覧
-
 .container
   .row
-    - @products.each do |pro|
-      .col-xs-12.col-sm-6.col-md-4
-        .card.mb-4
-          .card-body.pt-4.btn-parent
-            %h4.card-title= pro.name
-            %h6.card-subtitle.mb-2.text-muted= pro.price
-            %p.card-text= pro.description
+    = render partial: '/products/list', collection: @products, as: :product
+
+= link_to 'test', products_path, class: "btn btn-primary mb-3"

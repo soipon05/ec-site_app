@@ -1,2 +1,14 @@
-%h1 Products#show
-%p Find me in app/views/products/show.html.haml
+%h1.justify-content-center 製品詳細
+
+.nav.justify-content-end
+  = link_to '製品一覧へ', products_path, class: 'nav-link'
+.justify-content-center
+  .content
+    = image_tag @product.image.variant(resize: "563x563"), class: 'img-fluid mx-auto d-block mb-5' if @product.image.attached?
+    
+    .border.border-dark.mx-auto.p-3.w-50.mb-3
+      %p.mb= @product.name
+      %p= @product.description
+      %p= @product.public_price
+  
+  =link_to '買い物かごに入れる', products_path, class: 'btn-lg btn-info text-white w-75 btn-block mx-auto text-center'
