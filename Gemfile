@@ -70,3 +70,5 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.2.0'
 # bootstrap導入のためのgem
 gem 'mini_racer'
+# URLのidをハッシュ化させるために必要なGem
+gem 'hashids'
