@@ -13,6 +13,19 @@ class Product < ApplicationRecord
   validates :description, presence: true, on: :published
   validates :price,       presence: true, on: :published
   validates :selllimit,   presence: true, on: :published
+  validate  :validates_image
+
+  def to_key
+    [to_hash_id(id)]
+  end
+
+  def to_param
+    to_hash_id(id)
+  end
+
+  def convert_hash_id(id)
+    Hashids.new("test").encode(id.to_s)
+  end
 
   def validates_image
     return unless image.attached?

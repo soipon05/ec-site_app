@@ -30,6 +30,10 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.find(undo_hash(params[:id]))
+  end
+
+  def undo_hash(id)
+    (Hashids.new("test").decode(id)).join
   end
 end
