@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
   has_one_attached :image
+  has_many :cart_products, dependent: :destroy
+  has_many :cart, through: :cart_products
   # 定数を使ってステータスを管理
   enum status: { draft: 0, published: 1, closed: 2 }
 
