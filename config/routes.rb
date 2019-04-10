@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'carts/index'
   # get 'products/index'
   # get 'products/show'
   devise_for :users, :controllers => {
