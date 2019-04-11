@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :cart_products, only: [:create]
   get 'carts/index'
   # get 'products/index'
   # get 'products/show'
