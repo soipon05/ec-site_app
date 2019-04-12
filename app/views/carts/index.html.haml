@@ -1,2 +1,33 @@
-%h1 Carts#index
-%p Find me in app/views/carts/index.html.haml
+.container
+  %table#cart.table.table-hover.table-condensed
+    %thead
+      %tr
+        %th 製品
+        %th 価格
+        %th 数量
+        %th
+    %tbody
+    - @cart_products.each do |cart|
+      %tr
+        %td{data: {th: "製品"}}
+          .row
+            .col-sm-2.hidden-xs= image_tag cart.product.image.variant(resize: "100x100"), class: "img-fluid" if cart.product.image.attached?
+            .col-sm-10
+              %h4.nomargin= cart.product.name
+              %p= cart.product.description
+        %td{data: {th: "価格"}}= cart.product.public_price
+        %td{data: {th: "数量"}}
+          %p= cart.quantity
+    %tfoot
+      %tr.visible-xs.d-none
+        %td.text-center
+          %strong ¥1999
+      %tr
+        %td
+          = link_to root_path, class: "btn btn-warning" do
+            %i.fa.fa-arrow-left
+            ホームへ戻る
+        %td
+          = link_to purchase_records_new_path, class: 'btn btn-success btn-block' do
+            レジへ進む
+            %i.fa.fa-arrow-right
