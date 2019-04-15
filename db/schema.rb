@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_111149) do
+ActiveRecord::Schema.define(version: 2019_04_14_100826) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(version: 2019_04_13_111149) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "purchase_record_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "purchase_record_id"
+    t.bigint "product_id"
+    t.string "product_name"
+    t.integer "price"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_purchase_record_details_on_product_id"
+    t.index ["purchase_record_id"], name: "index_purchase_record_details_on_purchase_record_id"
+  end
+
   create_table "purchase_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.integer "product_amount", default: 0, null: false
@@ -90,5 +102,7 @@ ActiveRecord::Schema.define(version: 2019_04_13_111149) do
   add_foreign_key "cart_products", "carts"
   add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "purchase_record_details", "products"
+  add_foreign_key "purchase_record_details", "purchase_records"
   add_foreign_key "purchase_records", "users"
 end
