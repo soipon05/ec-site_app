@@ -1,0 +1,2 @@
+module Order::PurchaseRecordHelper
+end

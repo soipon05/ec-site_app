@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :order do
+    get 'purchase_record/new'
+  end
   resources :cart_products, only: [:create]
   get 'carts/index'
   # get 'products/index'
