@@ -1,5 +1,3 @@
-frozen_string_literal: true
-
 class Users::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation/new
   def new
@@ -13,6 +11,15 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   # GET /resource/confirmation?confirmation_token=abcdef
   def show
+    user = User.where(confirmation_token: params[:confirmation_token]).first
+    if user && user.customer_id.nil?
+      customer = Stripe::Customer.create(
+        description: "user_id: #{user.id}",
+        email: user.email
+      )
+      user.customer_id = customer.id
+      user.save
+    end
     super
   end
 
