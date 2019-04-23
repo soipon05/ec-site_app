@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
   namespace :order do
+    get 'credit_cards/index'
+    get 'credit_cards/new'
+  end
+  namespace :order do
     get 'purchase_records/new'
   end
   resources :cart_products, only: [:create]
